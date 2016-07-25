@@ -46,11 +46,11 @@ testData = cbind(yTest,subjectTest,xTest)
 
 
 # Combine test and train data to create a final data set
-finalData = rbind(trainingData,testData);
+finalData = rbind(trainingData,testData)
 
 # Create a vector for the column names from the finalData, which will be used
 # to select the desired mean() & stddev() columns
-colNames  = colnames(finalData); 
+colNames  = colnames(finalData)
 
 # 2. Extract only the measurements on the mean and standard deviation for each measurement. 
 
@@ -88,18 +88,18 @@ for (i in 1:length(colNames))
 };
 
 # Reassigning the new descriptive column names to the finalData set
-colnames(finalData) = colNames;
+colnames(finalData) = colNames
 
 # 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
 # Create a new table, finalDataNoActivityType without the activityType column
-finalDataNoActivityType  = finalData[,names(finalData) != 'activityType'];
+finalDataNoActivityType  = finalData[,names(finalData) != 'activityType']
 
 # Aggregate the finalDataNoActivityType table to include the mean of each variable per activity and per subject
-tidyData    = aggregate(finalDataNoActivityType[,names(finalDataNoActivityType) != c('activityId','subjectId')],by=list(activityId=finalDataNoActivityType$activityId,subjectId = finalDataNoActivityType$subjectId),mean);
+tidyData    = aggregate(finalDataNoActivityType[,names(finalDataNoActivityType) != c('activityId','subjectId')],by=list(activityId=finalDataNoActivityType$activityId,subjectId = finalDataNoActivityType$subjectId),mean)
 
 # Merge the tidyData with activityType to include Acitvity names
-tidyData    = merge(tidyData,activityType,by='activityId',all.x=TRUE);
+tidyData    = merge(tidyData,activityType,by='activityId',all.x=TRUE)
 
 # Loading the tidyData set locally
 write.table(tidyData, './tidyData.txt',row.names=TRUE,sep='\t')
