@@ -1,6 +1,6 @@
 # Getting-and-Cleaning-Data-Course-Project
 
-This is the repository for the submission of the course project GETTING and CLEaNING Data module.
+This is the repository for the submission of the course project GETTING and CLEANING Data module.
 
 Overview
 
